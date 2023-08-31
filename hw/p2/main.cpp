@@ -6,36 +6,53 @@
 using namespace std;
 
 int find_max(vector<int> arr) {
-  int max = arr[0];
-  int size = arr.size();
-  for (int i = 1; i < size; i++)
-    if (arr[i] > max)
-      max = arr[i];
-
+  int max = 0;
+  if (arr.size() > 0) {
+    max = arr[0];
+    int size = arr.size();
+    for (int i = 1; i < size; i++)
+      if (arr[i] > max)
+        max = arr[i];
+  }
   return max;
 }
 
 int find_min(vector<int> arr) {
-  int min = arr[0];
-  int size = arr.size();
-  for (int i = 1; i < size; i++)
-    if (arr[i] < min)
-      min = arr[i];
+  int min = 0;
+  if (arr.size() > 0) {
+    min = arr[0];
+    int size = arr.size();
+    for (int i = 1; i < size; i++)
+      if (arr[i] < min)
+        min = arr[i];
+  }
 
   return min;
 }
 
 int highest_return(vector<int> arr) {
-  if (size(arr) <= 1)
+  if (arr.size() <= 1)
     return 0;
-  int mid = size(arr) / 2;
+  // else if (arr.size() == 2) {
+  //   if (arr[1] - arr[0] > 0) {
+  //     return arr[1] - arr[0];
+  //   }
+  // }
+
+  int mid = arr.size() / 2;
   vector<int> lArr, rArr;
 
-  for (int i = 0; i < mid; i++)
-    lArr.push_back(arr[i]);
+  if (arr.size() == 2) {
+    lArr.push_back(arr[0]);
+    rArr.push_back(arr[1]);
 
-  for (int i = mid + 1; i < size(arr); i++)
-    rArr.push_back(arr[i]);
+  } else {
+    for (int i = 0; i < mid; i++)
+      lArr.push_back(arr[i]);
+
+    for (int i = mid + 1; i < arr.size(); i++)
+      rArr.push_back(arr[i]);
+  }
 
   int left_max = highest_return(lArr);
   int right_max = highest_return(rArr);
@@ -48,22 +65,17 @@ int main() {
   stringstream ss;
   string line;
   int c;
-  int n;
   vector<int> arr;
 
   getline(cin, line);
-  ss << line;
-  ss >> n;
-  ss.clear();
-
+  line.clear();
   getline(cin, line);
   ss << line;
-  cout << line;
 
-  while (ss >> c)
+  string oof = "";
+  while (ss >> c) {
     arr.push_back(c);
-
-  cout << highest_return(arr);
-
-  return 0;
+  }
+  // cout << oof << endl;
+  cout << highest_return(arr) << endl;
 }

@@ -14,8 +14,8 @@ def highest_return(arr):
 
 
 def main():
-    n = int(input())
-    arr = list(map(int, input().split()))
+    n = input()
+    arr = list(map(input().split()))
     result = highest_return(arr)
     print(max(result, 0))
 
