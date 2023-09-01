@@ -3,10 +3,6 @@
 #include <sstream>
 #include <string>
 #include <vector>
-
-struct node {
-  int val;
-  node *next;
-};
+using namespace std;
 
 int main() { return 0; }

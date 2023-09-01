@@ -33,11 +33,6 @@ int find_min(vector<int> arr) {
 int highest_return(vector<int> arr) {
   if (arr.size() <= 1)
     return 0;
-  // else if (arr.size() == 2) {
-  //   if (arr[1] - arr[0] > 0) {
-  //     return arr[1] - arr[0];
-  //   }
-  // }
 
   int mid = arr.size() / 2;
   vector<int> lArr, rArr;
