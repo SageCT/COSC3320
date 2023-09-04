@@ -6,7 +6,7 @@ Given the pre-order traversal and in-order traversal of a binary tree, output th
 Input format:
 line 1: number of nodes
 line 2: the pre-order traversal;
-line 3: the post-order in-order traversal.
+line 3: the in-order traversal.
 note: The tree nodes are labeled 1, 2, ..., n
 
 Example 1
