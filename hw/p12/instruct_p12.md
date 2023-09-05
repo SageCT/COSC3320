@@ -9,6 +9,7 @@ Important Info:
 You must solve this problem using recursion. If you do not use recursion, then you will not get any points for this assignment.
 HINT: One data structure that is helpful in solving this problem is the heap (a.k.a. priority queue) data structure.
 NOTE: There are some online solutions. However, most if not all of them are iterative algorithms. For example, there is a simple brute force solution that takes $O(n^2)$ time by checking all possible pairs. There are also solutions that use hashing (hashmaps, dictionaries, sets). These are not acceptable solutions. In any case, if we find a solution that is largely copied from another solution (e.g., in a verbatim manner or just simply changing variable names), it will be considered a violation of the academic honesty policy.
+
 Example 1:
 Input:
 1 2 3 3 4 5 5 6
