@@ -6,32 +6,34 @@
 #include <vector>
 using namespace std;
 
-void divideArrHelper(vector<int> &arr, vector<vector<int>> &res, int k,
-                     int startIdx) {
-  vector<int> toAdd;
-
-  if (startIdx + k > arr.size())
+void divideArrHelper(vector<int> &arr, int k, int startIdx, int n) {
+  if (startIdx + k > arr.size() || n == k)
     return;
 
   // Add the subarray of size k starting from the current index
-  int startNum = *min_element(arr.begin(), arr.end());
-  for (int i = startIdx + 1; i < startIdx + k; i++)
-    toAdd.push_back(arr[find(arr.begin(), arr.end(), ++startNum)]);
+  auto minElement = std::min_element(arr.begin(), arr.end());
+  arr.erase(minElement);
+  minElement = std::min_element(arr.begin(), arr.end());
 
-  res.push_back(toAdd);
+  return (arr[*minElement] == n + 1) ? divideArrHelper(arr, k, startIdx, n + 1)
+                                     : false;
+
   // Recursively call the function for the next subarray
-  divideArrHelper(arr, res, startIdx + k, k);
+  divideArrHelper(arr, k, startIdx + k, n);
 }
 
-bool divideArr(vector<int> &arr, vector<vector<int>> &res, int k,
-               int startIdx) {
+bool divideArr(vector<int> &arr, int k, int startIdx) {
+
+  sort(arr.begin(), arr.end());
+
   if (arr.size() % k > 0 || k == 0) {
     cout << "false";
     return false;
   }
 
   else {
-    divideArrHelper(arr, res, k, startIdx);
+    for (int i = 0; i < arr.size() / k; i++)
+      divideArrHelper(arr, k, startIdx + (k * i), arr[k * i]);
     return true;
   }
 }
@@ -88,6 +90,6 @@ int main() {
   ss >> c;
   divSize = c;
 
-  if (divideArr(arr, res, divSize, 0))
-    cout << checkIfConsec(res, divSize);
+  if (divideArr(arr, divSize, 0))
+    ;
 }
