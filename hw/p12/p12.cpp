@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <iostream>
-#include <limits>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -18,9 +17,9 @@ bool divideArrHelper(vector<int> &arr, int k, int startIdx) {
   // Find the smallest element of
   for (int i = startIdx + 1; i < startIdx + k; i++) {
 
-    if (find(arr.begin(), arr.end(), ++minNum) != arr.end()) {
+    if (find(arr.begin(), arr.end(), ++minNum) != arr.end())
       arr.erase(find(arr.begin(), arr.end(), minNum));
-    } else
+    else
       return false;
   }
   // Recursively call the function for the next subarray
@@ -28,7 +27,6 @@ bool divideArrHelper(vector<int> &arr, int k, int startIdx) {
 }
 
 bool divideArr(vector<int> &arr, int k, int startIdx) {
-  sort(arr.begin(), arr.end());
 
   if (arr.size() % k > 0 || k == 0) {
     cout << "false";
