@@ -29,15 +29,11 @@ bool divideArrHelper(vector<int> &arr, int k, int startIdx) {
 bool divideArr(vector<int> &arr, int k, int startIdx) {
   sort(arr.begin(), arr.end());
 
-  if (arr.size() % k > 0 || k == 0) {
+  if (arr.size() % k > 0 || k == 0 || !divideArrHelper(arr, k, startIdx)) {
     cout << "false";
     return false;
   }
 
-  if (!divideArrHelper(arr, k, startIdx)) {
-    cout << "false";
-    return false;
-  }
   cout << "true";
   return true;
 }
