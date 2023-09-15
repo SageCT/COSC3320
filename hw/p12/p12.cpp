@@ -5,7 +5,7 @@
 #include <vector>
 using namespace std;
 
-bool divideArrHelper(vector<int> &arr, int k, int startIdx) {
+bool divideArrHelper(vector<int> &arr, int &k) {
   // * if startIdx == end of the array, return
   if (arr.size() == 0)
     return true;
@@ -15,7 +15,7 @@ bool divideArrHelper(vector<int> &arr, int k, int startIdx) {
   arr.erase(arr.begin());
 
   // * Find the next element in conseq. order
-  for (int i = startIdx + 1; i < startIdx + k; i++) {
+  for (int i = 1; i < k; i++) {
     auto test = find(arr.begin(), arr.end(), ++minNum);
     if (test != arr.end())
       arr.erase(test);
@@ -23,13 +23,13 @@ bool divideArrHelper(vector<int> &arr, int k, int startIdx) {
       return false;
   }
   // * Recursively call the function for the next subarray
-  return divideArrHelper(arr, k, startIdx + k);
+  return divideArrHelper(arr, k);
 }
 
-bool divideArr(vector<int> &arr, int k, int startIdx) {
+bool divideArr(vector<int> &arr, int k) {
   sort(arr.begin(), arr.end());
 
-  if (arr.size() % k > 0 || k == 0 || !divideArrHelper(arr, k, startIdx)) {
+  if (arr.size() % k > 0 || k == 0 || !divideArrHelper(arr, k)) {
     cout << "false";
     return false;
   }
@@ -43,6 +43,9 @@ int main() {
   vector<int> arr;
   string line;
   int c, divSize;
+
+  // arr = {1, 2, 3, 3, 4, 5, 5, 6};
+  // divSize = 4;
 
   // * Input Handling
   getline(cin, line);
@@ -59,5 +62,5 @@ int main() {
   divSize = c;
 
   // * Calling the functions
-  divideArr(arr, divSize, 0);
+  divideArr(arr, divSize);
 }

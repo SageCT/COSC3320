@@ -6,3 +6,6 @@ c58cabc3-10c8-4e3b-881b-fa7a95ed2d3f
 
 (cpp) formatting changes 8/8.
 90b163fd-9656-4a6f-8bca-47cd10dac5ed
+
+(cpp) removed redundant variables 8/8.
+5dd83b89-b2a3-4c61-8253-f1aebdc20ed3
