@@ -39,7 +39,7 @@ void merge(&robertArray, &rachelArray, left, mid, right)
     merge subarrays back into their respective arrays
     left and right robert will merge back into robertArray and vice versa.
 
-    // the rest of the function is the same as basic mergeSort, with extra operations since thers two arrays,
+    // the rest of the function is the same as basic mergeSort, with extra operations since theres two arrays,
     // you get the idea :)
 
 void mergeSort(array1, array2, left, right) // this function is the EXACT same as its original, just add the second array as a parameter and you're set.
