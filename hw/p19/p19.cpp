@@ -9,10 +9,11 @@ int robPts = 0, racPts = 0;
 
 int helper(vector<int> &arr1, vector<int> &arr2) {
   int index = 0, tempScore = 0, finalScore = 0;
-  while (index < arr2.size() - 1) {
+  while (index < arr2.size()) {
     while (tempScore < arr1.size() && arr2[index] > arr1[tempScore])
       tempScore++;
-    finalScore += tempScore, index++;
+    finalScore += tempScore;
+    index++;
   }
   return finalScore;
 }
@@ -27,27 +28,22 @@ void merge(vector<int> &robArr, vector<int> &racArr, int left, int mid,
   lMid = mid - left + 1;
   rMid = right - mid;
 
-  // Rob Arr Left and Right
+  // Rob and Rac Arr Left
   for (int i = 0; i < lMid; i++)
-    robArrLeft.push_back(robArr[i]), racArrLeft.push_back(robArr[mid + i + 1]);
+    robArrLeft.push_back(robArr[left + i]),
+        racArrLeft.push_back(racArr[left + i]);
 
-  // Rac Arr Left and Right
+  // Rob and Rac Arr Right
   for (int i = 0; i < rMid; i++)
-    robArrRight.push_back(robArr[i]),
-        racArrRight.push_back(robArr[mid + i + 1]);
+    robArrRight.push_back(robArr[mid + i + 1]),
+        racArrRight.push_back(racArr[mid + i + 1]);
+
+  robPts += helper(racArrLeft, robArrRight);
+  racPts += helper(robArrLeft, racArrRight);
 
   int robi = 0, robj = 0;
   int raci = 0, racj = 0;
-
-  if (robi < robArrLeft.size() && robj < robArrRight.size())
-    robPts += helper(racArrLeft, robArrRight);
-
-  if (raci < racArrLeft.size() && racj < racArrRight.size())
-    racPts += helper(racArrLeft, robArrRight);
-
-  robi = 0, robj = 0;
-  raci = 0, racj = 0;
-  int robIndex = 0, racIndex = 0;
+  int robIndex = left, racIndex = left;
 
   // ? n1 = lMid n2 = rMid
   // ? rob merge section
@@ -55,8 +51,9 @@ void merge(vector<int> &robArr, vector<int> &racArr, int left, int mid,
     if (robArrLeft[robi] <= robArrRight[robj]) {
       robArr[robIndex] = robArrLeft[robi++];
     } else {
-      robArr[robIndex++] = robArrRight[robj++];
+      robArr[robIndex] = robArrRight[robj++];
     }
+    robIndex++;
   }
 
   while (robi < lMid)
@@ -64,11 +61,11 @@ void merge(vector<int> &robArr, vector<int> &racArr, int left, int mid,
 
   while (robj < rMid)
     robArr[robIndex++] = robArrRight[robj++];
-  // ? n1 = lMid n2 =
-  // ? rac merge section
 
+  // ? n1 = lMid n2 = rMid
+  // ? rac merge section
   while (raci < lMid && racj < rMid) {
-    if (racArrLeft[robi] <= racArrRight[racj]) {
+    if (racArrLeft[raci] <= racArrRight[racj]) {
       racArr[racIndex] = racArrLeft[raci++];
     } else {
       racArr[racIndex] = racArrRight[racj++];
@@ -113,6 +110,6 @@ int main() {
   while (ss >> a)
     racArr.push_back(a);
 
-  mergeSort(robArr, racArr, 0, robArr.size());
+  mergeSort(robArr, racArr, 0, robArr.size() - 1);
   cout << robPts << " " << racPts;
 }

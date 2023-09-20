@@ -11,7 +11,7 @@ int rachelPoints
 int helper(subArray1, subArray2) // this will be rachel and robert subarrays interchangably 
     // 3 ints, one to hold an index, one to hold a temp score, one to hold a final score. Start all at 0.
     while index < size of subArray2
-        while score is less than array1 size AND array2[index] is more than array1[tempScore]
+        while tempscore is less than array1 size AND array2[index] is more than array1[tempScore]
             increment score by one
         add tempScore to finalScore
         increment index
@@ -25,7 +25,7 @@ void merge(&robertArray, &rachelArray, left, mid, right)
     find midpoint of left subarray
     find midpoint of right subarray
 
-    create 4 subArrays (left & subarray for Robert and left & right for rachel)
+    create 4 subArrays (left & right subarray for Robert and left & right for rachel)
 
     copy the data to each subarray (same as usual, just doing it twice, i used 2 separate for loops, one for left subarrays one for rights)
 
@@ -39,7 +39,7 @@ void merge(&robertArray, &rachelArray, left, mid, right)
     merge subarrays back into their respective arrays
     left and right robert will merge back into robertArray and vice versa.
 
-    // the rest of the function is the same as basic mergeSort, with extra operations since theres two arrays,
+    // the rest of the function is the same as basic mergeSort, with extra operations since thers two arrays,
     // you get the idea :)
 
 void mergeSort(array1, array2, left, right) // this function is the EXACT same as its original, just add the second array as a parameter and you're set.
