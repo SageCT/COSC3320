@@ -31,4 +31,4 @@ high = int(input())
 
 # Generate and print stepping numbers
 stepping_numbers = generate_stepping_numbers(low, high)
-print(" ".join(map(str, stepping_numbers)))
+print(" ".oin(map(str, stepping_numbers)))
