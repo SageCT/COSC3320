@@ -19,7 +19,7 @@ def generate_stepping_numbers(low, high):
             backtrack(num * 10 + last_digit - 1)
 
     stepping_numbers = []
-    for i in range(10):  # Start with single-digit numbers
+    for i in range(10):
         backtrack(i)
 
     return sorted(stepping_numbers)
@@ -28,7 +28,5 @@ def generate_stepping_numbers(low, high):
 # Read input
 low = int(input())
 high = int(input())
-
-# Generate and print stepping numbers
 stepping_numbers = generate_stepping_numbers(low, high)
 print(" ".oin(map(str, stepping_numbers)))
