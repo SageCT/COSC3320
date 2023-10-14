@@ -7,6 +7,7 @@ The input has 3 lines. The first line is an integer for width. The second line i
 
 Important Info:
 You must solve this problem using dynamic programming (DP). If you do not use DP, you will not receive any credit for this assignment.
+
 Example 1:
 Input:
 2
