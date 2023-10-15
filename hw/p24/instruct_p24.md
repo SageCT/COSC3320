@@ -30,4 +30,5 @@ Explanation: The text is a sequence of 3 words: one, a, bc
 o n e - a - -
 b c - o n e -
 a - b c - - -
+
 The character '-' signifies an empty space on the screen.
