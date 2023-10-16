@@ -14,24 +14,33 @@ int text_fitting(vector<int> &wordLens, int &width, int &height) {
   // heightI, holds the index of the "row" we are on currently.
   // textCounter, holds how many text we have fit so far.
   int index = 0, count = 0, spaceTaken = 0, heightI = 0, textCounter = 0;
+  for (auto i : wordLens)
+    count += i + 1;
+
   // Holds the dp values for each word.
   vector<int> dp(height, 0);
 
-  while (heightI < height) {
-    do {
+  do {
+    if (width >= count) {
+      int linesFit = width / count;
+      textCounter += linesFit;
+      dp[heightI] = textCounter;
+      spaceTaken = width - (width % count);
+    }
+
+    else
+      spaceTaken = 0;
+
+    while (wordLens[index] + 1 <= width - spaceTaken) {
       spaceTaken += wordLens[index++] + 1;
 
-      // If we've reached the end of the words, reset index and add 1 to
-      // textCounter to track the number of words in this iteration.
-      // If we've reached the end of the words,
       if (index == wordLens.size()) {
         index = 0;
         dp[heightI] = ++textCounter;
       }
-    } while (wordLens[index] + 1 <= width - spaceTaken);
+    }
     heightI++;
-    spaceTaken = 0;
-  }
+  } while (heightI < height && index != 0);
 
   int currHeightI = heightI, i = 0;
   while (currHeightI < height) {
