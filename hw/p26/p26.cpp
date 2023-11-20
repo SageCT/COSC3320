@@ -1,7 +1,6 @@
+// #include <bits/stdc++.h>
 #include <iostream>
-#include <limits.h>
 #include <queue>
-#include <string>
 #include <vector>
 
 using namespace std;
@@ -35,8 +34,8 @@ vector<int> dijkstra(int src, const vector<vector<pair<int, int>>> &adj,
 
 int main() {
   int n, d, k, b, m;
-  vector<int> bus_stations(b);
   cin >> n >> d >> k >> b >> m;
+  vector<int> bus_stations(b);
   for (int i = 0; i < b; i++)
     cin >> bus_stations[i];
 
@@ -62,4 +61,6 @@ int main() {
       well_connected_towns++;
 
   cout << well_connected_towns << endl;
+
+  return 0;
 }
