@@ -1,16 +1,15 @@
 // #include <bits/stdc++.h>
+#include <climits>
 #include <iostream>
 #include <queue>
 #include <vector>
 
 using namespace std;
 
-const int INF = 1e9;
-
 vector<int> dijkstra(int src, const vector<vector<pair<int, int>>> &adj,
                      int d) {
   int n = adj.size();
-  vector<int> dist(n, INF);
+  vector<int> dist(n, INT32_MAX);
   dist[src] = 0;
   priority_queue<pair<int, int>, vector<pair<int, int>>,
                  greater<pair<int, int>>>
