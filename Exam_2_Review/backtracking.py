@@ -1,5 +1,7 @@
 from typing import List
 
+# Question number 1
+
 # N-Queens is a problem where you have to make an n x n chess board
 # and have queens where they cannot attack each other.
 
@@ -47,3 +49,11 @@ class Solution:
 
         backtrack(0)
         return res
+
+    # Question 2
+
+    # Given an array of integers nums and an integer k,
+    # return the total number of continuous subarrays whose sum equals to k
+
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        pass

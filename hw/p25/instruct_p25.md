@@ -13,16 +13,16 @@ Input:
 2 3 4
 5 6 4
 Output: 6
-
 Explanation: Choose the 2nd job.
+
 Example 2:
 Input:
 1 2 3 4
 3 4 5 6
 50 10 40 70
 Output: 120
-
 Explanation: Choose the 1st and 4th (last) job.
+
 Example 3:
 Input:
 1 2 3 4 6
