@@ -55,5 +55,25 @@ class Solution:
     # Given an array of integers nums and an integer k,
     # return the total number of continuous subarrays whose sum equals to k
 
-    def subarraySum(self, nums: List[int], k: int) -> int:
-        pass
+    def subarraySumEqualsK(self, nums: List[int], k: int) -> int:
+        hash_map = {}
+
+        currSum, count = 0, 0
+        for n in nums:
+            currSum += n
+            if currSum == k:
+                count += 1
+            # ? For however many ways to get to that difference,
+            # ? add that number you're keeping in your hash map
+            if currSum - k in hash_map:
+                count += hash_map[currSum - k]
+            # ? Add the current Sum as a possible combo in your hash map
+            if currSum in hash_map:
+                hash_map[currSum] += 1
+            else:
+                hash_map[currSum] = 1
+        return count
+
+
+# Testing
+# print(Solution().subarraySumEqualsK([3, 4, 7, 2, -3, 1, 4, 2], 7))
